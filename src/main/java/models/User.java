@@ -3,6 +3,7 @@ package models;
 import java.util.Objects;
 
 public class User {
+    private  int id;
     private String firstName;
     private String secondName;
     private String email;
@@ -67,12 +68,21 @@ public class User {
         this.department_id = department_id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getDepartment_id() == user.getDepartment_id() &&
+        return getId() == user.getId() &&
+                getDepartment_id() == user.getDepartment_id() &&
                 getFirstName().equals(user.getFirstName()) &&
                 getSecondName().equals(user.getSecondName()) &&
                 getEmail().equals(user.getEmail()) &&
@@ -82,6 +92,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getSecondName(), getEmail(), getPosition(), getRole(), getDepartment_id());
+        return Objects.hash(getId(), getFirstName(), getSecondName(), getEmail(), getPosition(), getRole(), getDepartment_id());
     }
 }
