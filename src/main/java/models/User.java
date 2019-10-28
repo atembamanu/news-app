@@ -7,15 +7,15 @@ public class User {
     private String firstName;
     private String secondName;
     private String email;
-    private String position;
+    private String designation;
     private String role;
     private int department_id;
 
-    public User(String firstName, String secondName, String email, String position, String role, int department_id) {
+    public User(String firstName, String secondName, String email, String designation, String role, int department_id) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
-        this.position = position;
+        this.designation = designation;
         this.role = role;
         this.department_id = department_id;
     }
@@ -44,12 +44,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPosition() {
-        return position;
+    public String getDesignation() {
+        return designation;
     }
 
     public void setPosition(String position) {
-        this.position = position;
+        this.designation = position;
     }
 
     public String getRole() {
@@ -86,12 +86,12 @@ public class User {
                 getFirstName().equals(user.getFirstName()) &&
                 getSecondName().equals(user.getSecondName()) &&
                 getEmail().equals(user.getEmail()) &&
-                getPosition().equals(user.getPosition()) &&
+                getDesignation().equals(user.getDesignation()) &&
                 getRole().equals(user.getRole());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getSecondName(), getEmail(), getPosition(), getRole(), getDepartment_id());
+        return Objects.hash(getId(), getFirstName(), getSecondName(), getEmail(), getDesignation(), getRole(), getDepartment_id());
     }
 }
