@@ -13,14 +13,14 @@ public class Sql2oDepartmentDao implements   DepartmentDao{
     public Sql2oDepartmentDao(Sql2o sql2o) { this.sql2o = sql2o; }
 
     @Override
-    public void addDepartment(Department user) {
+    public void addDepartment(Department department) {
         String sql = "INSERT INTO departments (name, description, empNo) VALUES (:name, :description, :empNo)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
-                    .bind(user)
+                    .bind(department)
                     .executeUpdate()
                     .getKey();
-            user.setId(id);
+            department.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }

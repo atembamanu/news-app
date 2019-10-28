@@ -5,12 +5,21 @@ import java.util.Objects;
 public class News {
     private String title;
     private String content;
-    private String Category;
+    private String category;
+    private  int id;
 
     public News(String title, String content, String category) {
         this.title = title;
         this.content = content;
-        this.Category = category;
+        this.category = category;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -30,11 +39,11 @@ public class News {
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
 
     @Override
@@ -42,13 +51,14 @@ public class News {
         if (this == o) return true;
         if (!(o instanceof News)) return false;
         News news = (News) o;
-        return getTitle().equals(news.getTitle()) &&
+        return getId() == news.getId() &&
+                getTitle().equals(news.getTitle()) &&
                 getContent().equals(news.getContent()) &&
                 getCategory().equals(news.getCategory());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTitle(), getContent(), getCategory());
+        return Objects.hash(getTitle(), getContent(), getCategory(), getId());
     }
 }
