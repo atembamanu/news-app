@@ -9,7 +9,7 @@ public class DepartmentTest {
     @Test
     public  void getDepartmentName_returnsCorrectDepartmentName(){
         Department department = setupDepartment();
-        assertEquals("Managerial", department.getDepartmentName());
+        assertEquals("Managerial", department.getName());
 
     }
     @Test
