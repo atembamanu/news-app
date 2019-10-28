@@ -3,23 +3,23 @@ package models;
 import java.util.Objects;
 
 public class Department {
-    private String departmentName;
+    private String name;
     private  String description;
     private int empNo;
     private  int id;
 
-    public Department(String departmentName, String description, int empNo) {
-        this.departmentName = departmentName;
+    public Department(String name, String description, int empNo) {
+        this.name = name;
         this.description = description;
         this.empNo = empNo;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public String getName() {
+        return name;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setDepartmentName(String Name) {
+        this.name = Name;
     }
 
     public String getDescription() {
@@ -53,12 +53,12 @@ public class Department {
         Department that = (Department) o;
         return getEmpNo() == that.getEmpNo() &&
                 getId() == that.getId() &&
-                getDepartmentName().equals(that.getDepartmentName()) &&
+                getName().equals(that.getName()) &&
                 getDescription().equals(that.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getDepartmentName(), getDescription(), getEmpNo(), getId());
+        return Objects.hash(getName(), getDescription(), getEmpNo(), getId());
     }
 }
