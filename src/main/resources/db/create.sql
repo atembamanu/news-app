@@ -6,7 +6,7 @@
     secondName VARCHAR,
     designation VARCHAR,
     role VARCHAR,
-    deptId int
+    department_id int
     );
 
     CREATE TABLE IF NOT EXISTS departments (
