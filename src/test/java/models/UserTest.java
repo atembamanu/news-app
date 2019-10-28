@@ -28,9 +28,9 @@ public class UserTest {
     }
 
     @Test
-    public void getPosition_returnsCorrectPosition() {
+    public void getDesignation_returnsCorrectDesignation() {
         User user = setupUser();
-        assertEquals("CEO", user.getPosition());
+        assertEquals("CEO", user.getDesignation());
 
     }
     @Test
