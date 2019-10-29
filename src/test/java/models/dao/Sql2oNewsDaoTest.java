@@ -3,8 +3,10 @@ package models.dao;
 import dao.NewsDao;
 import dao.Sql2oDepartmentDao;
 import dao.Sql2oNewsDao;
+import db.Credentials;
 import models.News;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
@@ -18,22 +20,21 @@ public class Sql2oNewsDaoTest {
 
     @Before
     public  void setUp() throws Exception {
-//        String connectionString = "jdbc:postgresql://localhost:5432/organizational_api_test";
-//        Sql2o sql2o = new Sql2o(connectionString, "postgres", "Atemba254!");
-//        sql2oUserDao = new Sql2oUserDao(sql2o);
-//        sql2oDepartmentDao = new Sql2oDepartmentDao(sql2o);
-//        conn = sql2o.open();
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        String connectionString = "jdbc:postgresql://localhost:5432/organizational_api_test";
+        Sql2o sql2o = new Sql2o(connectionString, Credentials.username, Credentials.pass);
         sql2oNewsDao = new Sql2oNewsDao(sql2o);
         conn = sql2o.open();
     }
 
     @After
     public  void tearDown() throws Exception {
-        conn.close();
+        sql2oNewsDao.deleteAllNews();
     }
 
+    @AfterClass
+    public  static void shutDown() {
+        conn.close();
+    }
     @Test
     public void getAllNews_returnsAllNews() {
         News news = setupNews();

@@ -2,6 +2,7 @@ package models.dao;
 
 import dao.Sql2oDepartmentDao;
 import dao.Sql2oUserDao;
+import db.Credentials;
 import models.Department;
 import models.User;
 import org.junit.*;
@@ -17,14 +18,8 @@ public class Sql2oUserDaoTest {
 
     @Before
     public  void setUp() throws Exception {
-//        String connectionString = "jdbc:postgresql://localhost:5432/organizational_api_test";
-//        Sql2o sql2o = new Sql2o(connectionString, "postgres", "Atemba254!");
-//        sql2oUserDao = new Sql2oUserDao(sql2o);
-//        sql2oDepartmentDao = new Sql2oDepartmentDao(sql2o);
-//        conn = sql2o.open();
-
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        String connectionString = "jdbc:postgresql://localhost:5432/organizational_api_test";
+        Sql2o sql2o = new Sql2o(connectionString, Credentials.username, Credentials.pass);
         sql2oUserDao = new Sql2oUserDao(sql2o);
         sql2oDepartmentDao = new Sql2oDepartmentDao(sql2o);
         conn = sql2o.open();
@@ -32,6 +27,12 @@ public class Sql2oUserDaoTest {
 
     @After
     public  void tearDown() throws Exception {
+        sql2oUserDao.deleteAllUsers();
+        sql2oDepartmentDao.deleteAllDepartments();
+    }
+
+    @AfterClass
+    public  static void shutDown() {
         conn.close();
     }
 

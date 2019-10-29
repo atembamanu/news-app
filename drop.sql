@@ -1,0 +1,2 @@
+DROP DATABASE organizational_api_test;
+DROP DATABASE organizational_api;
