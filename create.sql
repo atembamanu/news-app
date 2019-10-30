@@ -4,7 +4,14 @@
 
     \c organizational_api;
 
-    CREATE TABLE IF NOT EXISTS users (id int serial PRIMARY KEY, firstName VARCHAR, secondName VARCHAR,  designation VARCHAR, role VARCHAR,department_id int);
+    CREATE TABLE IF NOT EXISTS users (
+    id int serial PRIMARY KEY,
+    firstName VARCHAR,
+    secondName VARCHAR,
+    designation VARCHAR,
+    role VARCHAR,
+    department_id int
+    );
 
     CREATE TABLE IF NOT EXISTS departments (
     id serial PRIMARY KEY,
